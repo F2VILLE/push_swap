@@ -1,5 +1,7 @@
 # idea for sort
 
+https://www.geeksforgeeks.org/dsa/introduction-to-greedy-algorithm-data-structures-and-algorithm-tutorials/
+
 1) check if already sorted or if in block (ex : ra ra ra sorts the stack)
 
 2) scan for runs (eg Timsort)
