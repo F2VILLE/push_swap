@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 09:47:17 by fdeville          #+#    #+#             */
-/*   Updated: 2026/01/16 11:53:40 by fdeville         ###   ########.fr       */
+/*   Updated: 2026/01/16 13:20:02 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,31 @@
 
 void	print_op(t_opcode opcode)
 {
-	const char	*op_name;
+	char	*op_name = "  ";
 
 	if (opcode == SA)
-		op_name = "SA";
+		op_name = "sa";
 	else if (opcode == SB)
-		op_name = "SB";
+		op_name = "sb";
 	else if (opcode == SS)
-		op_name = "SS";
+		op_name = "ss";
 	else if (opcode == PA)
-		op_name = "PA";
+		op_name = "pa";
 	else if (opcode == PB)
-		op_name = "PB";
+		op_name = "pb";
 	else if (opcode == RA)
-		op_name = "RA";
+		op_name = "ra";
 	else if (opcode == RB)
-		op_name = "RB";
+		op_name = "rb";
 	else if (opcode == RR)
-		op_name = "RR";
+		op_name = "rr";
 	else if (opcode == RRA)
-		op_name = "RRA";
+		op_name = "rra";
 	else if (opcode == RRB)
-		op_name = "RRB";
+		op_name = "rrb";
 	else if (opcode == RRR)
-		op_name = "RRR";
-	else
-		op_name = "UNKNOWN";
-	printf("opcode: %s\n", op_name);
+		op_name = "rrr";
+	ft_putstr(op_name);
 }
 
 void op(t_stack *a, t_stack *b, t_opcode opcode)

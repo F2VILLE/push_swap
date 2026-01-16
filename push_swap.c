@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 03:19:26 by fdeville          #+#    #+#             */
-/*   Updated: 2026/01/16 12:03:27 by fdeville         ###   ########.fr       */
+/*   Updated: 2026/01/16 13:16:49 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void ft_putstr(char *str)
 	ft_putchar('\n');
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int ft_strcmp(char *s1, char *s2)
 {
-	int	i;
+	int i;
 
 	if (!s1 || !s2)
-		return (-1); 
+		return (-1);
 	i = 0;
 	while (s1[i] || s2[i])
 	{
@@ -72,35 +72,47 @@ int validate_inp(int ac, char *args[])
 	return (1);
 }
 
-void	push_swap(t_stack *a, t_stack *b)
+void push_swap(t_stack *a, t_stack *b)
 {
-	t_list	*curr;
-	int		i;
+	t_list *curr;
+	int i;
+	int j;
+	int k;
+	int idx;
 
-	while ((*(int *)ft_lstlast(a->top)->content) < (*(int *)(a->top->content)))
-		op(a, b, RRA);
-	curr = a->top;
-	i = 0;
-	while (curr->next)
+	k = 0;
+	while (k < a->size)
 	{
-		i++;
-		if ((*(int *)curr->content) > (*(int *)curr->next->content))
-			break ;
-		curr = curr->next;
-	}
-	while (i)
-	{
+		curr = a->top;
+		i = *((int *)curr->content);
+		j = 0;
+		idx = j;
+		while (curr)
+		{
+			if ((*(int *)curr->content) > i)
+			{
+				i = *((int *)curr->content);
+				idx = j;
+			}
+			curr = curr->next;
+			j++;
+		}
+
+		while (idx)
+		{
+			op(a, b, RA);
+			idx--;
+		}
 		op(a, b, PB);
-		i--;
+		k++;
 	}
-	op(a, b, RA);
-	curr = b->top;
-	while (curr)
+	k = 0;
+	while (k < a->size)
 	{
+		op(a, b, RRB);
 		op(a, b, PA);
-		curr = curr->next;
+		k++;
 	}
-	op(a, b, PA);
 }
 
 int main(int ac, char *av[])
@@ -125,7 +137,7 @@ int main(int ac, char *av[])
 	a.size = ssize;
 	b.size = ssize;
 	fill_stack(&a, av);
-	print_stacks(&a, &b);
+	// print_stacks(&a, &b);
 	push_swap(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
