@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 03:19:26 by fdeville          #+#    #+#             */
-/*   Updated: 2026/01/16 09:59:46 by fdeville         ###   ########.fr       */
+/*   Updated: 2026/01/16 10:51:15 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,16 @@ int main(int ac, char *av[])
 	b.size = ssize;
 	fill_stack(&a, av);
 	print_stacks(&a, &b);
+	op(&a, &b, SA);
+	op(&a, &b, PB);
 	op(&a, &b, PB);
 	op(&a, &b, PB);
 	op(&a, &b, RR);
-	op(&a, &b, RRA);
+	op(&a, &b, RRR);
+	op(&a, &b, SA);
+	op(&a, &b, PA);
+	op(&a, &b, PA);
+	op(&a, &b, PA);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
