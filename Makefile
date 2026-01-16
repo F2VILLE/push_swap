@@ -1,8 +1,11 @@
-CC = cc
-CF = -Wall -Werror -Wextra
-NAME = push_swap
-SRCS = ./push_swap.c
-OBJS = ${SRCS:.c=.o}
+CC := cc
+CF := -Wall -Werror -Wextra
+NAME := push_swap
+SRCS := ./push_swap.c ./stack_op.c ./stack.c ./stack_macro.c
+OBJS := ${SRCS:.c=.o}
+
+debug:
+	$(MAKE) CF="$(CF) -D DEBUG_MODE=1" all
 
 all: $(NAME) | libft/libft.a
 
