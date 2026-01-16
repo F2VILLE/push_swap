@@ -6,14 +6,46 @@
 /*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 09:47:17 by fdeville          #+#    #+#             */
-/*   Updated: 2026/01/16 10:11:02 by fdeville         ###   ########.fr       */
+/*   Updated: 2026/01/16 11:53:40 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	op(t_stack *a, t_stack *b, t_opcode opcode)
+void	print_op(t_opcode opcode)
 {
+	const char	*op_name;
+
+	if (opcode == SA)
+		op_name = "SA";
+	else if (opcode == SB)
+		op_name = "SB";
+	else if (opcode == SS)
+		op_name = "SS";
+	else if (opcode == PA)
+		op_name = "PA";
+	else if (opcode == PB)
+		op_name = "PB";
+	else if (opcode == RA)
+		op_name = "RA";
+	else if (opcode == RB)
+		op_name = "RB";
+	else if (opcode == RR)
+		op_name = "RR";
+	else if (opcode == RRA)
+		op_name = "RRA";
+	else if (opcode == RRB)
+		op_name = "RRB";
+	else if (opcode == RRR)
+		op_name = "RRR";
+	else
+		op_name = "UNKNOWN";
+	printf("opcode: %s\n", op_name);
+}
+
+void op(t_stack *a, t_stack *b, t_opcode opcode)
+{
+
 	if (opcode == SA || opcode == SS)
 		swap(a);
 	if (opcode == SB || opcode == SS)
@@ -30,25 +62,9 @@ void	op(t_stack *a, t_stack *b, t_opcode opcode)
 		rotate_down(a);
 	if (opcode == RRB || opcode == RRR)
 		rotate_down(b);
-	#ifdef DEBUG_MODE
-	const char *op_name;
-	switch (opcode)
-	{
-		case SA: op_name = "SA"; break;
-		case SB: op_name = "SB"; break;
-		case SS: op_name = "SS"; break;
-		case PA: op_name = "PA"; break;
-		case PB: op_name = "PB"; break;
-		case RA: op_name = "RA"; break;
-		case RB: op_name = "RB"; break;
-		case RR: op_name = "RR"; break;
-		case RRA: op_name = "RRA"; break;
-		case RRB: op_name = "RRB"; break;
-		case RRR: op_name = "RRR"; break;
-		default: op_name = "UNKNOWN"; break;
-	}
-	printf("opcode: %s\n", op_name);
+	print_op(opcode);
+#ifdef DEBUG_MODE
 	print_stacks(a, b);
 
-	#endif
+#endif
 }

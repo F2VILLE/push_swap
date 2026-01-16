@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 03:19:26 by fdeville          #+#    #+#             */
-/*   Updated: 2026/01/16 10:51:15 by fdeville         ###   ########.fr       */
+/*   Updated: 2026/01/16 12:03:27 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,22 @@ void ft_putstr(char *str)
 	ft_putchar('\n');
 }
 
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	if (!s1 || !s2)
+		return (-1); 
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
 int validate_inp(int ac, char *args[])
 {
 	int i;
@@ -35,13 +51,56 @@ int validate_inp(int ac, char *args[])
 		j = 0;
 		while (args[i][j])
 		{
-			if (!ft_isdigit(args[i][j]))
+			if (!ft_isdigit(args[i][j]) && !(j == 0 && args[i][j] == '-'))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < ac - 1)
+	{
+		j = i + 1;
+		while (j < ac)
+		{
+			if (!ft_strcmp(args[i], args[j]))
 				return (0);
 			j++;
 		}
 		i++;
 	}
 	return (1);
+}
+
+void	push_swap(t_stack *a, t_stack *b)
+{
+	t_list	*curr;
+	int		i;
+
+	while ((*(int *)ft_lstlast(a->top)->content) < (*(int *)(a->top->content)))
+		op(a, b, RRA);
+	curr = a->top;
+	i = 0;
+	while (curr->next)
+	{
+		i++;
+		if ((*(int *)curr->content) > (*(int *)curr->next->content))
+			break ;
+		curr = curr->next;
+	}
+	while (i)
+	{
+		op(a, b, PB);
+		i--;
+	}
+	op(a, b, RA);
+	curr = b->top;
+	while (curr)
+	{
+		op(a, b, PA);
+		curr = curr->next;
+	}
+	op(a, b, PA);
 }
 
 int main(int ac, char *av[])
@@ -67,16 +126,7 @@ int main(int ac, char *av[])
 	b.size = ssize;
 	fill_stack(&a, av);
 	print_stacks(&a, &b);
-	op(&a, &b, SA);
-	op(&a, &b, PB);
-	op(&a, &b, PB);
-	op(&a, &b, PB);
-	op(&a, &b, RR);
-	op(&a, &b, RRR);
-	op(&a, &b, SA);
-	op(&a, &b, PA);
-	op(&a, &b, PA);
-	op(&a, &b, PA);
+	push_swap(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

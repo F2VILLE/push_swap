@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 09:43:54 by fdeville          #+#    #+#             */
-/*   Updated: 2026/01/16 09:44:06 by fdeville         ###   ########.fr       */
+/*   Updated: 2026/01/16 11:13:42 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	rotate_up(t_stack *s)
 	t_list	*first;
 	t_list	*last;
 
+	if (!s || !s->top || !s->top->next)
+		return ;
 	first = s->top;
 	last = ft_lstlast(first);
 	s->top = first->next;
