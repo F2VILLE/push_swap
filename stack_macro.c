@@ -6,7 +6,7 @@
 /*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 09:47:17 by fdeville          #+#    #+#             */
-/*   Updated: 2026/01/16 13:20:02 by fdeville         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:41:37 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_op(t_opcode opcode)
 {
-	char	*op_name = "  ";
+	char	*	op_name = "  ";
 
 	if (opcode == SA)
 		op_name = "sa";
