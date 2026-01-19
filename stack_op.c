@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_op.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeville <fdeville@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 09:43:54 by fdeville          #+#    #+#             */
-/*   Updated: 2026/01/16 11:13:42 by fdeville         ###   ########.fr       */
+/*   Updated: 2026/01/19 02:00:12 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	swap(t_stack *s)
 {
-	t_list	*a;
-	t_list	*b;
+	t_node	*a;
+	t_node	*b;
 
 	if (!s || !s->top || !s->top->next)
 		return ;
@@ -28,8 +28,8 @@ void	swap(t_stack *s)
 
 void	rotate_up(t_stack *s)
 {
-	t_list	*first;
-	t_list	*last;
+	t_node	*first;
+	t_node	*last;
 
 	if (!s || !s->top || !s->top->next)
 		return ;
@@ -42,8 +42,8 @@ void	rotate_up(t_stack *s)
 
 void	rotate_down(t_stack *s)
 {
-	t_list	*curr;
-	t_list	*before_last;
+	t_node	*curr;
+	t_node	*before_last;
 
 	if (!s || !s->top || !s->top->next)
 		return ;
@@ -61,7 +61,7 @@ void	rotate_down(t_stack *s)
 
 void	push(t_stack *dst, t_stack *src)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
 	tmp = src->top->next;
 	src->top->next = dst->top;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeville <fdeville@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 04:27:30 by fdeville          #+#    #+#             */
-/*   Updated: 2026/01/16 11:52:11 by fdeville         ###   ########.fr       */
+/*   Updated: 2026/01/19 02:01:29 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,18 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+typedef struct s_node
+{
+	int		val;
+	int		idx;
+	t_node	*next;
+}	t_node;
+
 typedef struct s_stack
 {
 	int		size;
 	int		count;
-	t_list	*top;
+	t_node	*top;
 }	t_stack;
 
 typedef enum e_opcode

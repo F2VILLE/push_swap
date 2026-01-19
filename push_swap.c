@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdeville <fdeville@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdeville <fdeville@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 03:19:26 by fdeville          #+#    #+#             */
-/*   Updated: 2026/01/16 13:16:49 by fdeville         ###   ########.fr       */
+/*   Updated: 2026/01/19 02:00:08 by fdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int validate_inp(int ac, char *args[])
 
 void push_swap(t_stack *a, t_stack *b)
 {
-	t_list *curr;
+	t_node *curr;
 	int i;
 	int j;
 	int k;
